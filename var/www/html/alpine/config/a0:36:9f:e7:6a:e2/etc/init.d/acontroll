@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+
+description="Sets some parameters of the machine."
+
+depend() {
+        keyword -prefix -lxc -docker
+}
+
+start() {
+        #if [ -s /etc/hostname ] ; then
+        #        opts="-F /etc/hostname"
+        #else
+        #        opts="${hostname:-localhost}"
+        #fi
+        ebegin "Setting parameters"
+	sleep 10;
+        #hostname $opts
+        eend $?
+}

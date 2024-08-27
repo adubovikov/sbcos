@@ -1,0 +1,5 @@
+# Soft dependencies extracted from modules themselves.
+softdep r8169 pre: realtek
+softdep ohci_pci pre: ehci_pci
+softdep uhci_hcd pre: ehci_pci
+softdep libcrc32c pre: crc32c

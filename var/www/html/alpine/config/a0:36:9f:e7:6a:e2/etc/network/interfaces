@@ -1,0 +1,20 @@
+auto lo
+iface lo inet loopback
+
+#MASTER - INTRANET
+auto eth4
+iface eth4 inet static
+        address 10.255.3.11
+        netmask 255.255.255.0
+	up ip route add 10.255.2.0/24 via 10.255.3.1
+
+auto eth2
+iface eth2 inet manual
+      pre-up ifconfig eth2 up
+      post-down ifconfig eth2 down
+
+auto eth3
+iface eth3 inet manual
+      pre-up ifconfig eth3 up
+      post-down ifconfig eth3 down
+

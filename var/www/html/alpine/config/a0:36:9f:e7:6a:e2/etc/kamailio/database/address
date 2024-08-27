@@ -1,0 +1,13 @@
+id(int,auto) grp(int) ip_addr(string) mask(int) port(int) tag(string,null) description(string,null)
+1:1:10.8.7.148:32:0:NULL:Trusted, Core IP
+101:101:10.8.7.20:32:0:NULL:Untrusted, Access IP
+201:201:registrar-[10.8.7.20].career:32:0:NULL:External-Register-Untruste Customer01
+301:301:registrar-[10.8.7.148].career:32:0:NULL:Internal-Register-Trusted Customer02
+2:2:10.8.7.149:32:0:NULL:Trusted, Core IP
+102:102:10.8.7.21:32:0:NULL:Untrusted, Access IP
+202:202:registrar-[10.8.7.21].career:32:0:NULL:External-Register-Untrusted Customer02
+302:302:registrar-[10.8.7.149].career:32:0:NULL:Internal-Register-Trusted Customer02
+3:3:10.8.7.150:32:0:NULL:Trusted, Core IP
+103:103:10.8.7.22:32:0:NULL:Untrusted, Access IP
+203:203:registrar-[10.8.7.22].career:32:0:NULL:External-Register-Untrusted Customer03
+303:303:registrar-[10.8.7.150].career:32:0:NULL:Internal-Register-Trusted Customer03

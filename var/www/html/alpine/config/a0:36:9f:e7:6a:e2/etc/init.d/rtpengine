@@ -1,0 +1,104 @@
+#!/sbin/openrc-run
+
+description="RTPEngine"
+description_checkconfig="Verify configuration file"
+description_reload="Reload configuration"
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+
+pidfile="/var/run/rtpengine.pid"
+command="/usr/sbin/rtpengine"
+cfgfile="/etc/rtpengine/rtpengine.conf"
+command_args="--config-file=$cfgfile"
+
+required_files="$cfgfile"
+TABLE=0
+
+depend() {
+	use logger dns
+	after entropy
+}
+
+checkconfig() {
+
+	return 0
+}
+
+start() {
+        ebegin "Starting rtpengine"
+	set +e
+
+	modprobe xt_tcpudp
+	modprobe xt_string
+	modprobe xt_conntrack
+	modprobe iptable_filter
+        modprobe x_tables
+	modprobe ip_tables
+
+	insmod /lib/rtpengine/xt_RTPENGINE.ko 
+
+        if [ -e /proc/rtpengine/control ]; then
+        	echo "del $TABLE" > /proc/rtpengine/control 2>/dev/null
+        fi
+
+
+	iptables -D INPUT -j rtpengine 2> /dev/null
+        iptables -N rtpengine 2> /dev/null
+        iptables -I INPUT -j rtpengine
+
+	if iptables -C INPUT -j rtpengine 1> /dev/null 2> /dev/null && iptables -n --list rtpengine 1> /dev/null 2> /dev/null; then
+        	iptables -D rtpengine -p udp -j RTPENGINE --id "$TABLE" 2>/dev/null
+                iptables -I rtpengine -p udp -j RTPENGINE --id "$TABLE"
+	else
+                echo ""
+                echo "Missing rtpengine iptables chain - not starting"
+                exit 0
+	fi
+        set -e
+
+	start-stop-daemon --start --quiet --pidfile $pidfile \
+                --exec $command -- $command_args || echo -n " already running"
+        echo "."
+
+        eend $?
+}
+
+start_pre() {
+	checkconfig
+}
+
+stop() {
+	if [ "${RC_CMD}" = "restart" ] ; then
+		checkconfig || return 1
+	fi
+
+	ebegin "Stopping $RC_SVCNAME"
+
+	start-stop-daemon --stop --exec "$command" \
+		--pidfile "$pidfile" --quiet
+	eend $?
+
+	if [ "$TABLE" -ge 0 ]; then
+                set +e
+
+                if [ -e /proc/rtpengine/control ]; then
+                        echo "del $TABLE" > /proc/rtpengine/control 2>/dev/null
+                fi
+
+                iptables -D rtpengine -p udp -j RTPENGINE --id "$TABLE" 2>/dev/null
+                rmmod xt_RTPENGINE 2>/dev/null
+                set -e
+        fi
+}
+
+reload() {
+	checkconfig || return 1
+
+	ebegin "Reloading $RC_SVCNAME"
+	start-stop-daemon --signal HUP \
+		--exec "$command" -- $command_args --pidfile "$pidfile"
+	eend $?
+}
+

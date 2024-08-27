@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+
+command="/usr/bin/telegraf"
+cfgfile="/etc/telegraf.conf"
+command_args="--config=$cfgfile --quiet"
+command_background=yes
+command_user=kamailio:kamailio
+pidfile="/run/$RC_SVCNAME.pid"
+extra_started_commands="reload"
+
+depend() {
+        need net
+        after firewall
+}
+
+reload() {
+	chmod 0600 /etc/monitrc
+        ebegin "Reloading ${RC_SVCNAME}"
+        start-stop-daemon --signal HUP --pidfile "${pidfile}"
+        eend $?
+}
+

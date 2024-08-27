@@ -1,0 +1,12 @@
+#ET
+
+#Repo01 MAIN
+http://10.255.3.2/alpine/v3.11.6/main
+#Local
+http://10.255.3.2/alpine/v3.11.6/local
+
+##Repo02 MAIN
+#http://10.255.3.4/alpine/v3.11.6/main
+##Local
+#http://10.255.3.4/alpine/v3.11.6/local
+

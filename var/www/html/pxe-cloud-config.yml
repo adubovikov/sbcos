@@ -1,0 +1,1 @@
+append panic=10 console=ttyS0,9600 console=tty0 hostname=sbc01 cldctrl=127.0.0.1 cldnode=0cc47a01337d                                   

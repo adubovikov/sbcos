@@ -1,0 +1,73 @@
+# line format
+# setit(integer) destination(sip uri) flags (integer, optional)
+# LOCAL ACCESS - Untrusted from Internet
+201 sip:10.8.7.20:5060 0 0 access=10.8.7.148:5060;socket=udp:10.8.7.148:5060;weight=100
+202 sip:10.8.7.21:5060 0 0 access=10.8.7.149:5060;socket=udp:10.8.7.149:5060;weight=100
+203 sip:10.8.7.22:5060 0 0 access=10.8.7.150:5060;socket=udp:10.8.7.150:5060;weight=100
+#Trusted
+# Reg05
+301 sip:192.168.9.162:5060 0 2 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=25
+# Reg04
+301 sip:192.168.8.165:5060 0 2 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=100
+# Reg03
+301 sip:192.168.9.152:5060 0 5 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=25
+# Reg02
+301 sip:192.168.8.46:5060 0 10 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=25
+
+#Customer01
+# Reg03
+302 sip:192.168.9.151:5060 0 5 access=10.8.7.21:5060;socket=udp:10.8.7.149:5060;weight=50
+# Reg02
+302 sip:192.168.8.22:5060 0 10 access=10.8.7.21:5060;socket=udp:10.8.7.149:5060;weight=100
+
+#TEST Customer02
+# Reg05
+303 sip:192.168.9.162:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=50
+# Reg04
+303 sip:192.168.8.165:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=50
+# Reg03
+303 sip:192.168.9.152:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=50
+# Reg02
+303 sip:192.168.8.46:5060 0 10 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=100
+#
+# Reg05
+#305 sip:192.168.9.162:5060 0 2 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=100
+#NEW GROUP
+#reg 05
+311 sip:192.168.9.162:5060 0 5 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=25
+# Reg04
+311 sip:192.168.8.165:5060 0 5 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=25
+# Reg03
+311 sip:192.168.9.152:5060 0 5 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=25
+# Reg02
+311 sip:192.168.8.46:5060 0 5 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=25
+#Customer03
+#reg 05
+313 sip:192.168.9.162:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=25
+# Reg04
+313 sip:192.168.8.165:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=25
+# Reg03
+313 sip:192.168.9.152:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=25
+# Reg02
+313 sip:192.168.8.46:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=25
+
+#
+#reg 05
+325 sip:192.168.9.162:5060 0 5 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=100
+# Reg04
+324 sip:192.168.8.165:5060 0 5 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=100
+# Reg03
+323 sip:192.168.9.152:5060 0 5 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=100
+# Reg02
+322 sip:192.168.8.46:5060 0 5 access=10.8.7.20:5060;socket=udp:10.8.7.148:5060;weight=100
+
+#Customer03
+#reg 05
+335 sip:192.168.9.162:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=100
+# Reg04
+334 sip:192.168.8.165:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=100
+# Reg03
+333 sip:192.168.9.152:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=100
+# Reg02
+332 sip:192.168.8.46:5060 0 5 access=10.8.7.22:5060;socket=udp:10.8.7.150:5060;weight=100
+

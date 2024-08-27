@@ -1,0 +1,23 @@
+0fPREREQUISITES FOR INSTALLING DEBIAN07                                           09F207
+
+You must have at least 105 megabytes of RAM to use this Debian installer.
+
+You should have space on your hard disk to create a new disk partition
+of at least 680 megabytes to install the base system. You'll need more
+disk space to install additional packages, depending on what you wish
+to do with your new Debian system.
+
+See the Installation Guide or the FAQ for more information; both
+documents are available at the Debian web site, 0fhttp://www.debian.org/07
+
+Thank you for choosing Debian!
+
+
+
+
+
+
+
+
+
+Press F1control and F then 1 for the help index, or ENTER to 

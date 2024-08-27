@@ -1,0 +1,23 @@
+0fCOPYRIGHTS AND WARRANTIES07                                                    09F1007
+
+Debian GNU/Linux is Copyright (C) 1993-2014 Software in the Public Interest,
+and others.
+
+The Debian GNU/Linux system is freely redistributable. After installation,
+the exact distribution terms for each package are described in the
+corresponding file /usr/share/doc/0bpackagename07/copyright.
+
+Debian GNU/Linux comes with 0fABSOLUTELY NO WARRANTY07, to the extent
+permitted by applicable law.
+
+
+
+
+
+
+
+
+
+
+
+Press F1control and F then 1 for the help index, or ENTER to 
