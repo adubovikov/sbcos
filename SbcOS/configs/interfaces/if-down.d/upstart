@@ -1,4 +1,0 @@
-#!/bin/sh -e
-
-#echo " $IFACE $LOGICAL $ADDRFAM $METHOD"
-
